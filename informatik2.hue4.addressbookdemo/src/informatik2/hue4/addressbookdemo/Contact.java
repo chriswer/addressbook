@@ -132,42 +132,20 @@ public abstract class Contact
 	
 	public void print ()
 	{
-		this.print(true);
-	}
-	
-	
-	public void print (boolean formatHorizontally)
-	{
-		if(formatHorizontally)
-		{
-			StringBuilder sb = new StringBuilder();
-			sb.append("Contact [Firstname: ");
-			sb.append(this.getFirstname());
-			sb.append(", Surname:");
-			sb.append(this.getSurname());
-			sb.append(", Address: ");
-			sb.append(this.getAddress());
-			sb.append(", EMail: ");
-			sb.append(this.getEMail());
-			sb.append(", Phone: ");
-			sb.append(this.getPhone());
-			sb.append("]");
-			
-			System.out.println(sb.toString());
-		}
+		StringBuilder sb = new StringBuilder();
+		sb.append("Contact [Firstname: ");
+		sb.append(this.getFirstname());
+		sb.append(", Surname:");
+		sb.append(this.getSurname());
+		sb.append(", Address: ");
+		sb.append(this.getAddress());
+		sb.append(", EMail: ");
+		sb.append(this.getEMail());
+		sb.append(", Phone: ");
+		sb.append(this.getPhone());
+		sb.append("]");
 		
-		else
-		{
-			System.out.println("\n\nContact");
-			
-			System.out.println("----------------------------------------");
-			System.out.println("Firstname: " + this.getFirstname());
-			System.out.println("Surname: " + this.getSurname());
-			System.out.println("Address: " + this.getAddress());
-			System.out.println("EMail: " + this.getEMail());
-			System.out.println("Phone: " + this.getPhone());
-			System.out.println("----------------------------------------\n");
-		}
+		System.out.println(sb.toString());
 	}
 	
 	

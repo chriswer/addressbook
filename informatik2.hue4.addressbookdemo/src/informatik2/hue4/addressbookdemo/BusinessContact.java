@@ -105,7 +105,7 @@ public class BusinessContact extends Contact
 		
 		sb.append("BusinessContact [Firstname: ");
 		sb.append(this.getFirstname());
-		sb.append(", Surname:");
+		sb.append(", Surname: ");
 		sb.append(this.getSurname());
 		sb.append(", Address: ");
 		sb.append(this.getAddress());

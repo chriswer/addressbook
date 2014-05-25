@@ -1,7 +1,10 @@
 package informatik2.hue4.addressbookdemo;
 
+import java.util.GregorianCalendar;
+
 import informatik2.hue4.addressbookdemo.AddressBook;
 import informatik2.hue4.addressbookdemo.BusinessContact;
+import informatik2.hue4.addressbookdemo.PrivateContact;
 
 
 /**
@@ -19,7 +22,8 @@ public class AddressBookDemo {
            	myAddressBook.addContact(new BusinessContact("Max", "Muster", "Fooville", "maxi@student.at", "0123456789", "Pflaster Inc","212 456 123","http://google.com"));
            	myAddressBook.addContact(new BusinessContact("Linda", "Payerl", "Barville", "linda@student.at", "01 555 456", "Frog Inc","312 100 123","http://belgacom.be"));
            	myAddressBook.addContact(new BusinessContact("Kermit", "Frog", "Graz", "kermit@student.at", "10 12 14 16", "Commodo Inc","412 156 123","http://derstandard.at"));
-           	
+           	myAddressBook.addContact(new PrivateContact("Steve", "Travis", "Los Angeles", "travis@student.at", "555 910 567", new GregorianCalendar(1980,5,30)));
+           	myAddressBook.addContact(new PrivateContact("Albert", "Du Treuil", "Bruxelles", "albert@student.at", "0479 910 567", new GregorianCalendar(1974,4,20)));
            	
            	//equals
            	BusinessContact bc1 = new BusinessContact("Claudia", "Payerl", "Graz", "claudia@student.at", "045 555 019", "Prinzessin Inc","212 456 123","http://sueddeutsche.de");
