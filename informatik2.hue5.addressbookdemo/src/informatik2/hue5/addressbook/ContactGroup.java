@@ -1,10 +1,11 @@
 package informatik2.hue5.addressbook;
 
 import informatik2.hue5.addressbook.Contact;
-
+import informatik2.hue5.addressbook.AddressBookItem;
 import java.util.LinkedList;
 
-public class ContactGroup extends Contact {
+
+public class ContactGroup extends AddressBookItem {
 
 		private String title;
 		private String description;

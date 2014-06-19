@@ -1,10 +1,11 @@
 package informatik2.hue5.addressbook;
 
 import java.lang.StringBuilder;
+import informatik2.hue5.addressbook.AddressBookItem;
 
 //Collection Framework
 
-public abstract class Contact {
+public abstract class Contact extends AddressBookItem {
 
 	private String firstname = "";
 	private String surname = "";
