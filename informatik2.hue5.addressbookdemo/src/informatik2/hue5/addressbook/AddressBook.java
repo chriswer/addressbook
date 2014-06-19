@@ -102,6 +102,7 @@ public class AddressBook {
 	// method
 
 	public void exportContactsToFile(String filePath) {
+		
 		try {
 			FileWriter writer = new FileWriter(filePath);
 

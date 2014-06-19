@@ -3,6 +3,7 @@ package informatik2.hue5.addressbook;
 import informatik2.hue5.addressbook.Contact;
 import informatik2.hue5.addressbook.AddressBookItem;
 
+import java.lang.StringBuilder;
 import java.util.LinkedList;
 
 
@@ -10,22 +11,22 @@ public class ContactGroup extends AddressBookItem {
 
 		private String title;
 		private String description;
-		private LinkedList<Contact> members;
+		private LinkedList<Contact> items;
 		
 		
-		public void settitle(String title) {
+		public void setTitle(String title) {
 			this.title = title;
 		}
 
-		public String gettitle() {
+		public String getTitle() {
 			return this.title;
 		}
 
-		public void setdescription(String description) {
+		public void setDescription(String description) {
 			this.description = description;
 		}
 
-		public String getdescription() {
+		public String getDescription() {
 			return this.description;
 		}
 
@@ -34,20 +35,54 @@ public class ContactGroup extends AddressBookItem {
 			
 			this.title = title;
 			this.description = description;
-			this.members = new LinkedList<Contact>();
+			this.items = new LinkedList<Contact>();
 			
 			// constructor
 		}
 		
 		
 		public void print() {
-			//TODO
+			
+			StringBuilder sb = new StringBuilder();
+			
+			sb.append("ContactGroup [Title: ");
+			sb.append(this.getTitle());
+			sb.append(", Description:");
+			sb.append(this.getDescription());
+			sb.append("]");
+
+			System.out.println(sb.toString());
+			
+			//prints group's information
 		}
 		
 		
 		public String toCsv() {
-			//TODO
-			return "";
+
+			StringBuilder result = new StringBuilder();
+			String separator = ";";
+
+			result.append(this.getTitle());
+			result.append(separator);
+			result.append(this.getDescription());
+			
+			return result.toString();
+		
+			//returns this group's information as a string
+		}
+		
+		public void addContact(Contact c) {
+			if (!this.items.contains(c))
+				this.items.add(c);
+			
+			//add contact to this contact group
+		}
+		
+		public void removeContact(Contact c) {
+			if (!this.items.contains(c))
+				this.items.add(c);
+			
+			//remove contact to this contact group
 		}
 		
 		/*
