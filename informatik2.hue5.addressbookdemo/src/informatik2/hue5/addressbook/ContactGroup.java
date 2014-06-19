@@ -2,6 +2,7 @@ package informatik2.hue5.addressbook;
 
 import informatik2.hue5.addressbook.Contact;
 import informatik2.hue5.addressbook.AddressBookItem;
+
 import java.util.LinkedList;
 
 
@@ -9,7 +10,7 @@ public class ContactGroup extends AddressBookItem {
 
 		private String title;
 		private String description;
-		private LinkedList<Integer> members;
+		private LinkedList<Contact> members;
 		
 		
 		public void settitle(String title) {
@@ -29,21 +30,27 @@ public class ContactGroup extends AddressBookItem {
 		}
 
 		
-		public ContactGroup(String firstName, String surName, String address,
-				String emailAddress, String phoneNumber, String title,
-				String description) {
-			super(firstName, surName, address, emailAddress, phoneNumber);
-			
-			// reference to parent class --> keyword super
+		public ContactGroup(String title, String description) {
 			
 			this.title = title;
 			this.description = description;
-			this.members = new LinkedList<Integer>();
+			this.members = new LinkedList<Contact>();
 			
 			// constructor
 		}
 		
 		
+		public void print() {
+			//TODO
+		}
+		
+		
+		public String toCsv() {
+			//TODO
+			return "";
+		}
+		
+		/*
 		// checks if there are members referenced, which are already deleted contacts
 		public void checkIfReferencedMembersAreStoredContacts(LinkedList<Contact> contacts){
 			// check if some members no longer exists
@@ -84,6 +91,7 @@ public class ContactGroup extends AddressBookItem {
 			}
 			return retval;
 		}
+		
 		
 		public void addMember(Integer Contact c)  {
 			if (!this.addMember.contains(c))
@@ -175,7 +183,7 @@ public class ContactGroup extends AddressBookItem {
 		public void equals() {
 			
 		}
-		
+		*/
 	}
 
 

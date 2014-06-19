@@ -10,8 +10,8 @@ import java.io.IOException;
 
 // Collection Framework
 
-
 import informatik2.hue5.addressbook.Contact;
+import informatik2.hue5.addressbook.AddressBookItem;
 import informatik2.hue5.addressbook.ContactFirstnameComparator;
 import informatik2.hue5.addressbook.ContactSurnameComparator;
 
@@ -21,7 +21,7 @@ public class AddressBook {
 	// private int maxSize = 0;
 	// private int size = 0;
 	// private Contact[] contacts = null;
-	private List<Contact> contacts = new LinkedList<Contact>();
+	private List<AddressBookItem> items = new LinkedList<AddressBookItem>();
 
 	// member variables
 	// visibility of the class (private --> can only be used within this class)
@@ -69,34 +69,34 @@ public class AddressBook {
 	 }
 	
 
-	public static void printContacts(List<Contact> contacts) {
-		for (Contact c : contacts)
-			c.print();
+	public static void printContacts(List<AddressBookItem> items) {
+		for (AddressBookItem a : items)
+			a.print();
 	}
 
 	// static method--> you have not to define the object, it is possible to
 	// define it in the class
 
 	public void addContact(Contact c) {
-		if (!this.contacts.contains(c))
-			this.contacts.add(c);
+		if (!this.items.contains(c))
+			this.items.add(c);
 	}
 
 	// controls whether distinct contact elements exist
 	// control of duplicates
 
 	public void removeContact(Contact c) {
-		this.contacts.remove(c);
+		this.items.remove(c);
 	}
 
 	// delete contacts
 
 	public int numOfContacts() {
-		return this.contacts.size();
+		return this.items.size();
 	}
 
 	public void print() {
-		AddressBook.printContacts(this.contacts);
+		AddressBook.printContacts(this.items);
 	}
 
 	// method
@@ -107,8 +107,8 @@ public class AddressBook {
 
 			writer.append("Vorname;Nachname;Adresse;eMail;Telefonnummer;Geburtsdatum;Firmenbezeichnung;FaxNummer;Firmen-WebSite\n");
 
-			for (Contact c : this.contacts) {
-				writer.append(c.toCsv());
+			for (AddressBookItem a : this.items) {
+				writer.append(a.toCsv());
 				writer.append('\n');
 			}
 
@@ -130,14 +130,16 @@ public class AddressBook {
 
 	
 	public void printSortedByFirstname() {
-		Collections.sort(this.contacts, new ContactFirstnameComparator());
+		//Collections.sort(this.items, new ContactFirstnameComparator());
+		//TODO: problem, cause ContactGroup has no firstname to be sorted by; to be discussed 
 		this.print();
 	}
 
 	// sort after firstname
 
 	public void printSortedBySurname() {
-		Collections.sort(this.contacts, new ContactSurnameComparator());
+		//Collections.sort(this.items, new ContactSurnameComparator());
+		//TODO: problem, cause ContactGroup has no surname to be sorted by; to be discussed
 		this.print();
 	}
 }
