@@ -3,12 +3,11 @@ package informatik2.hue5.addressbook;
 import java.util.List;
 import java.util.Collections;
 import java.util.LinkedList;
-import java.io.BufferedReader;
-import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 
 // Collection Framework
+
 
 import informatik2.hue5.addressbook.Contact;
 import informatik2.hue5.addressbook.AddressBookItem;
@@ -21,7 +20,8 @@ public class AddressBook {
 	// private int maxSize = 0;
 	// private int size = 0;
 	// private Contact[] contacts = null;
-	private List<AddressBookItem> items = new LinkedList<AddressBookItem>();
+	private List<Contact> conctacts = new LinkedList<Contact>();
+	private List<ContactGroup> groups = new LinkedList<ContactGroup>();
 
 	// member variables
 	// visibility of the class (private --> can only be used within this class)
@@ -52,51 +52,71 @@ public class AddressBook {
 	// constructor--> defined a objects
 	// name of the constructor = name of the class
 	
-	public static void main(String[]arg) throws Exception {
-			
-			BufferedReader CSVFile = new BufferedReader (new FileReader ("addressbook.csv"));
-			String dataRow = CSVFile.readLine();
-			while (dataRow != null) {
-				String [] dataArray = dataRow.split(",");
-				for (String item:dataArray) {
-					System.out.print(item + "\t");
-				}
-			System.out.println();
-			dataRow = CSVFile.readLine();
-			}
-			CSVFile.close();
-			System.out.println();
-	 }
 	
 
-	public static void printContacts(List<AddressBookItem> items) {
-		for (AddressBookItem a : items)
-			a.print();
+	public static void printContacts(List<Contact> contacts) {
+		
+		for (Contact c : contacts)
+			c.print();
 	}
-
+	
 	// static method--> you have not to define the object, it is possible to
 	// define it in the class
 
+	
+	public static void printGroups(List<ContactGroup> groups) {
+		
+		for (ContactGroup g : groups) {
+		
+			System.out.println("\n");
+			g.print();
+		}
+	}
+
+	
+
 	public void addContact(Contact c) {
-		if (!this.items.contains(c))
-			this.items.add(c);
+		if (!this.conctacts.contains(c))
+			this.conctacts.add(c);
 	}
 
 	// controls whether distinct contact elements exist
 	// control of duplicates
 
 	public void removeContact(Contact c) {
-		this.items.remove(c);
+		this.conctacts.remove(c);
+	}
+	
+	
+	public int numOfContacts() {
+		return this.conctacts.size();
+	}
+	
+	
+	public void addGroup(ContactGroup g) {
+		if (!this.groups.contains(g))
+			this.groups.add(g);
 	}
 
-	// delete contacts
 
-	public int numOfContacts() {
-		return this.items.size();
+	public void removeGroup(ContactGroup g) {
+		this.groups.remove(g);
+	}
+ 
+
+	public int numOfGroups() {
+		return this.groups.size();
 	}
 
 	public void print() {
-		AddressBook.printContacts(this.items);
+		
+		AddressBook.printContacts(this.conctacts);
+	}
+	
+	
+	public void printGroups() {
+		
+		AddressBook.printGroups(this.groups);
 	}
 
 	// method
@@ -108,7 +128,7 @@ public class AddressBook {
 
 			writer.append("Vorname;Nachname;Adresse;eMail;Telefonnummer;Geburtsdatum;Firmenbezeichnung;FaxNummer;Firmen-WebSite\n");
 
-			for (AddressBookItem a : this.items) {
+			for (AddressBookItem a : this.conctacts) {
 				writer.append(a.toCsv());
 				writer.append('\n');
 			}
@@ -131,18 +151,18 @@ public class AddressBook {
 
 	
 	public void printSortedByFirstname() {
-		//Collections.sort(this.items, new ContactFirstnameComparator());
-		//TODO: problem, cause ContactGroup has no firstname to be sorted by; to be discussed 
+		
+		//TODO: problem, cause ContactGroup has no firstname to be sorted by;
+		Collections.sort(this.conctacts, new ContactFirstnameComparator());
 		this.print();
 	}
-
-	// sort after firstname
+	// sort by firstname
 
 	public void printSortedBySurname() {
-		//Collections.sort(this.items, new ContactSurnameComparator());
-		//TODO: problem, cause ContactGroup has no surname to be sorted by; to be discussed
+		
+		Collections.sort(this.conctacts, new ContactSurnameComparator());
 		this.print();
 	}
+	// sort by surname
 }
 
-// sort after surname

@@ -49,11 +49,15 @@ public class ContactGroup extends AddressBookItem {
 			sb.append(this.getTitle());
 			sb.append(", Description:");
 			sb.append(this.getDescription());
+			sb.append(", item count:");
+			sb.append(this.items.size());
 			sb.append("]");
-
 			System.out.println(sb.toString());
 			
-			//prints group's information
+			for (AddressBookItem a : items)
+				a.print();
+			
+			//prints group's information and all contacts within
 		}
 		
 		
@@ -66,12 +70,21 @@ public class ContactGroup extends AddressBookItem {
 			result.append(separator);
 			result.append(this.getDescription());
 			
+			
+			//TODO: return contacts in group in an appropriate format, for ex.:
+			//result.append(separator);
+			//for (AddressBookItem a : items)
+			//	result.append(a.toCsv());
+			//problem here: it breaks the csv format inside the output file.
+			
+			
 			return result.toString();
 		
-			//returns this group's information as a string
+			//returns this group's information as a string, along with the contacts within
 		}
 		
 		public void addContact(Contact c) {
+			
 			if (!this.items.contains(c))
 				this.items.add(c);
 			
@@ -79,6 +92,7 @@ public class ContactGroup extends AddressBookItem {
 		}
 		
 		public void removeContact(Contact c) {
+			
 			if (!this.items.contains(c))
 				this.items.add(c);
 			

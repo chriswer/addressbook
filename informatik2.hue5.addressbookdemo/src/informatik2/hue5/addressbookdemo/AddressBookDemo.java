@@ -68,19 +68,34 @@ public class AddressBookDemo {
 		myAddressBook.addContact(bc3);
 
 		// sorting by surname
-		System.out
-				.println("\n\nPrinting sorted by Surname:\n----------------------------------------");
+		System.out.println("\n\nPrinting sorted by Surname:\n----------------------------------------");
 		myAddressBook.printSortedBySurname();
 
 		// sorting by firstname
-		System.out
-				.println("\n\nPrinting sorted by Firstname:\n----------------------------------------");
+		System.out.println("\n\nPrinting sorted by Firstname:\n----------------------------------------");
 		myAddressBook.printSortedByFirstname();
 
 		// saving to disk
 		String filePath = "addressbook.csv";
 		System.out.println("\n\nSaving to disk, filename: " + filePath);
 		myAddressBook.exportContactsToFile(filePath);
+		
+		
+		//create some groups
+		System.out.println("\n\nContactGroups:\n----------------------------------------");
+		ContactGroup cg1 = new ContactGroup("Tennis-Club", "Alle meine Tennis-Freunde");
+		ContactGroup cg2 = new ContactGroup("Fussball-Freunde","WM-Begeisterte Freunde");
+		
+		cg1.addContact(kathi);
+		cg1.addContact(bc1);
+		
+		cg2.addContact(bc1);
+		cg2.addContact(kathi);
+				
+		myAddressBook.addGroup(cg1);
+		myAddressBook.addGroup(cg2);
+		
+		myAddressBook.printGroups();
 
 		/*
 		 * // create some contacts... Contact person1 = new Contact("Max",
